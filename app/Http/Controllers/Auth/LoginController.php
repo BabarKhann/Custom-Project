@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
 
-class RegisterController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,35 +24,24 @@ class RegisterController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('auth.login');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     * //     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'first_name' => 'required|alpha',
-            'last_name' => 'required|alpha',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|alpha_dash|confirmed',
-        ]);
-
-        User::create($validate);
-
-        return redirect(route('login_form'))
-            ->with('success', 'Successfully Registered. You can Login Now !');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,7 +52,7 @@ class RegisterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -75,8 +63,8 @@ class RegisterController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -87,7 +75,7 @@ class RegisterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
